@@ -34,7 +34,9 @@ EntityAddOrUpdate.propTypes = {
   entityName: PropTypes.string.isRequired,
   entityPath: PropTypes.string.isRequired,
   isEditMode: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired,
   submitHandler: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default EntityAddOrUpdate;

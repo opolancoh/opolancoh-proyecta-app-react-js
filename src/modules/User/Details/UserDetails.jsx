@@ -8,10 +8,10 @@ const UserDetails = () => {
     { label: 'Nombre', key: 'firstName' },
     { label: 'Apellido', key: 'lastName' },
     { label: 'Nombre a mostrar', key: 'displayName' },
-    { label: 'Roles', key: 'roles', render: (roles) => roles.map(role => role.name).join(', ') },
+    { label: 'Roles', key: 'roles', render: (roles) => roles.map((role) => role.name).join(', ') },
   ];
 
-  return <EntityDetails entityName="Usuario" entityPath="users" getById={getById} fields={fields} />;
+  return <EntityDetails subtitle="Usuario" entityPath="users" getByIdService={getById} fields={fields} />;
 };
 
 export default UserDetails;

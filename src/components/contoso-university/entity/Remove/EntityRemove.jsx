@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import PropTypes from 'prop-types'; 
+import PropTypes from 'prop-types';
 import { dateToLocaleString } from '@helpers/date-helper';
 import Loading from '../../Loading';
 
@@ -48,8 +48,8 @@ const EntityRemove = ({ subtitle, entityPath, infoFields = [], getByIdService, r
       <hr />
 
       <dl className="row">
-        {infoFields.map((field, index) => (
-          <React.Fragment key={index}>
+        {infoFields.map((field) => (
+          <React.Fragment key={field.key}>
             <div className="col-2">
               <dt>{field.label}:</dt>
             </div>
@@ -95,7 +95,7 @@ EntityRemove.propTypes = {
   entityPath: PropTypes.string.isRequired,
   infoFields: PropTypes.array.isRequired,
   getByIdService: PropTypes.func.isRequired,
-  removeIdService: PropTypes.func.isRequired,
+  removeService: PropTypes.func.isRequired,
 };
 
 export default EntityRemove;

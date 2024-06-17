@@ -1,4 +1,5 @@
-import React, { createContext, useReducer, useEffect } from 'react';
+import React, { createContext, useReducer, useEffect, useMemo } from 'react';
+import PropTypes from 'prop-types';
 import { decodeJWT } from '@helpers/auth-helper';
 
 const initialState = {
@@ -48,42 +49,61 @@ export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    const token = localStorage.getItem('access_token');
-    if (token) {
-      const decoded = getUserFromToken(token);
-      dispatch({
-        type: 'LOGIN',
-        payload: decoded,
-      });
-    }
+    const initializeAuth = async () => {
+      try {
+        const token = localStorage.getItem('access_token');
+        if (token) {
+          const decoded = getUserFromToken(token);
+          dispatch({
+            type: 'LOGIN',
+            payload: decoded,
+          });
+        }
+      } catch (error) {
+        console.error('Error initializing auth:', error);
+      }
+    };
+
+    initializeAuth();
   }, []);
 
   // Actions
   const loginContext = ({ accessToken, refreshToken }) => {
-    localStorage.setItem('access_token', accessToken);
-    localStorage.setItem('refresh_token', refreshToken);
-    dispatch({
-      type: 'LOGIN',
-      payload: getUserFromToken(accessToken),
-    });
+    try {
+      localStorage.setItem('access_token', accessToken);
+      localStorage.setItem('refresh_token', refreshToken);
+      dispatch({
+        type: 'LOGIN',
+        payload: getUserFromToken(accessToken),
+      });
+    } catch (error) {
+      console.error('Error logging in:', error);
+    }
   };
 
   const logoutContext = () => {
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token');
-    dispatch({ type: 'LOGOUT' });
+    try {
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('refresh_token');
+      dispatch({ type: 'LOGOUT' });
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
   };
 
-  return (
-    <AuthContext.Provider
-      value={{
-        user: state.user,
-        isAuthenticated: state.isAuthenticated,
-        loginContext,
-        logoutContext,
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
+  const contextValue = useMemo(
+    () => ({
+      user: state.user,
+      isAuthenticated: state.isAuthenticated,
+      loginContext,
+      logoutContext,
+    }),
+    [state.user, state.isAuthenticated]
   );
+
+  return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>;
+};
+
+AuthProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };

@@ -20,7 +20,7 @@ function UserIndex() {
     []
   );
 
-  const renderRow = useCallback(
+  const dataRenderRow = useCallback(
     (item) => (
       <tr key={item.id}>
         <th scope="row">{item.userName}</th>
@@ -48,11 +48,11 @@ function UserIndex() {
 
   return (
     <EntityList
-      entityName="Usuarios"
+      title="Usuarios"
       entityPath={entityPath}
       fetchDataFunction={getAll}
       columns={columns}
-      renderRow={renderRow}
+      dataRenderRow={dataRenderRow}
     />
   );
 }

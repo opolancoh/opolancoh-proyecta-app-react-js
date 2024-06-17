@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types'; 
+import PropTypes from 'prop-types';
 import Loading from '../../Loading';
 
 function EntityDetailsCustom({
@@ -54,7 +54,8 @@ EntityDetailsCustom.propTypes = {
   entityId: PropTypes.string.isRequired,
   createdText: PropTypes.string.isRequired,
   updatedText: PropTypes.string.isRequired,
-  entityId: PropTypes.string.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default EntityDetailsCustom;

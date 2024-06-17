@@ -6,9 +6,9 @@ function RowLoading({ colSpan }) {
     <tr>
       <td colSpan={colSpan}>
         <div className="d-flex justify-content-center">
-          <div className="spinner-border" role="status">
+          <output className="spinner-border">
             <span className="visually-hidden">Loading...</span>
-          </div>
+          </output>
         </div>
       </td>
     </tr>

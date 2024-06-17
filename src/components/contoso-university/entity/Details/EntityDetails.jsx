@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import PropTypes from 'prop-types'; 
+import PropTypes from 'prop-types';
 import { dateToLocaleString } from '@helpers/date-helper';
 import Loading from '../../Loading';
 
-const EntityDetails = ({ subtitle, entityPath, getById, fields = [] }) => {
+const EntityDetails = ({ subtitle, entityPath, getByIdService, fields = [] }) => {
   const { entityId } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState({});
 
   useEffect(() => {
     async function fetchData() {
-      const response = await getById(entityId);
+      const response = await getByIdService(entityId);
       setData(response.data);
       setIsLoading(false);
     }
 
     fetchData();
-  }, [entityId, getById]);
+  }, [entityId, getByIdService]);
 
   if (isLoading) return <Loading />;
 
@@ -33,7 +33,7 @@ const EntityDetails = ({ subtitle, entityPath, getById, fields = [] }) => {
 
       <dl className="row">
         {fields.map((field, index) => (
-          <React.Fragment key={index}>
+          <React.Fragment key={field.key}>
             <div className="col-2">
               <dt>{field.label}:</dt>
             </div>
@@ -69,7 +69,8 @@ const EntityDetails = ({ subtitle, entityPath, getById, fields = [] }) => {
 EntityDetails.propTypes = {
   subtitle: PropTypes.string.isRequired,
   entityPath: PropTypes.string.isRequired,
-  getById: PropTypes.func.isRequired,
+  getByIdService: PropTypes.func.isRequired,
+  fields: PropTypes.array.isRequired,
 };
 
 export default EntityDetails;
