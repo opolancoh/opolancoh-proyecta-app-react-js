@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { getServerInfo } from '../../services/apiInformationService';
-import InfoPage from '../../components/contoso-university/InfoPage';
-import Loading from '../../components/contoso-university/Loading';
+import { getServerInfo } from '@services/apiInformationService';
+import InfoPage from '@components/contoso-university/InfoPage';
+import Loading from '@components/contoso-university/Loading';
 
 function ApiServerInfo() {
   const [data, setData] = useState({});

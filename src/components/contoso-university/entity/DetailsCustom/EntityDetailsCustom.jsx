@@ -1,8 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types'; 
 import Loading from '../../Loading';
 
-const EntityDetailsCustom = ({ entityName, entityPath, entityId, createdText, updatedText, isLoading, children }) => {
+function EntityDetailsCustom({
+  entityName,
+  entityPath,
+  entityId,
+  createdText,
+  updatedText,
+  isLoading = true,
+  children,
+}) {
   return (
     <>
       <h2>Detalle</h2>
@@ -37,6 +46,15 @@ const EntityDetailsCustom = ({ entityName, entityPath, entityId, createdText, up
       )}
     </>
   );
+}
+
+EntityDetailsCustom.propTypes = {
+  entityName: PropTypes.string.isRequired,
+  entityPath: PropTypes.string.isRequired,
+  entityId: PropTypes.string.isRequired,
+  createdText: PropTypes.string.isRequired,
+  updatedText: PropTypes.string.isRequired,
+  entityId: PropTypes.string.isRequired,
 };
 
 export default EntityDetailsCustom;

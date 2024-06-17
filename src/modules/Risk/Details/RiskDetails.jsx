@@ -1,10 +1,10 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
-import translations from '../../../helpers/translations';
-import { getById } from '../../../services/riskService';
+import translations from '@helpers/translations';
+import { getById } from '@services/riskService';
 import { entityPath } from '../RiskIndex';
-import { dateToLocaleString } from '../../../helpers/date-helper';
-import EntityDetailsCustom from '../../../components/contoso-university/entity/DetailsCustom/EntityDetailsCustom';
+import { dateToLocaleString } from '@helpers/date-helper';
+import EntityDetailsCustom from '@components/contoso-university/entity/DetailsCustom/EntityDetailsCustom';
 
 const t = translations.es;
 

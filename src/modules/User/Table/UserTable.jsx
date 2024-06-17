@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types'; 
 
 function Table({ children }) {
   return (
@@ -46,7 +47,7 @@ function TableNoData() {
   );
 }
 
-function UserTable({ entityPath, data, isLoading }) {
+function UserTable({ entityPath, data = [], isLoading = true }) {
   if (isLoading) return <TableIsLoading />;
 
   if (data.length === 0) return <TableNoData />;
@@ -68,9 +69,8 @@ function UserTable({ entityPath, data, isLoading }) {
           </td>
           <td>
             <div className="d-flex gap-2 mb-3">
-              <Link to={`/${entityPath}/${x.id}`}>Detalle</Link> |
-              <Link to={`/${entityPath}/${x.id}/edit`}>Editar</Link> |
-              <Link to={`/${entityPath}/${x.id}/remove`}>Eliminar</Link>
+              <Link to={`/${entityPath}/${x.id}`}>Detalle</Link> |<Link to={`/${entityPath}/${x.id}/edit`}>Editar</Link>{' '}
+              |<Link to={`/${entityPath}/${x.id}/remove`}>Eliminar</Link>
             </div>
           </td>
         </tr>
@@ -78,5 +78,9 @@ function UserTable({ entityPath, data, isLoading }) {
     </Table>
   );
 }
+
+EntityDetails.propTypes = {
+  entityPath: PropTypes.string.isRequired,
+};
 
 export default UserTable;

@@ -1,4 +1,4 @@
-function Forbidden() {
+function ForbiddenPage() {
   return (
     <>
       <h1>403: Acceso no permitido</h1>
@@ -7,4 +7,4 @@ function Forbidden() {
   );
 }
 
-export default Forbidden;
+export default ForbiddenPage;

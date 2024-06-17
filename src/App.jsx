@@ -1,26 +1,26 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import NotFound from './pages/NotFound';
-import Header from './components/contoso-university/Header';
-import Footer from './components/contoso-university/Footer';
-import About from './pages/About';
-import AppInfo from './pages/InformationApp';
-import ApiServerInfo from './pages/InformationApiServer';
-import ApiSystemInfo from './pages/InformationApiSystem';
-import Error from './pages/Error';
-import UserIndex from './modules/User/UserIndex';
-import Register from './pages/Auth/Register';
-import Login from './pages/Auth/Login';
-import { AuthProvider } from './contexts/AuthContext';
-import Forbidden from './pages/Forbidden';
-import UserDetails from './modules/User/Details/UserDetails';
-import UserAddOrUpdate from './modules/User/AddOrUpdate/UserAddOrUpdate';
-import UserRemove from './modules/User/Remove/UserRemove';
-import RiskIndex from './modules/Risk/RiskIndex';
-import RiskDetails from './modules/Risk/Details/RiskDetails';
-import RiskAddOrUpdate from './modules/Risk/AddOrUpdate/RiskAddOrUpdate';
-import RiskRemove from './modules/Risk/Remove/RiskRemove';
+import Home from '@pages/Home/HomePage';
+import About from '@pages/About/AboutPage';
+import NotFound from '@pages/NotFound/NotFoundPage';
+import Forbidden from '@pages/Forbidden/ForbiddenPage';
+import Error from '@pages/Error/ErrorPage';
+import Login from '@pages/Auth/Login/LoginPage';
+import Register from '@pages/Auth/Register/RegisterPage';
+import Header from '@components/contoso-university/Header';
+import Footer from '@components/contoso-university/Footer';
+import AppInfo from '@pages/InformationApp';
+import ApiServerInfo from '@pages/InformationApiServer';
+import ApiSystemInfo from '@pages/InformationApiSystem';
+import UserIndex from '@modules/User/UserIndex';
+import { AuthProvider } from '@contexts/AuthContext';
+import UserDetails from '@modules/User/Details/UserDetails';
+import UserAddOrUpdate from '@modules/User/AddOrUpdate/UserAddOrUpdate';
+import UserRemove from '@modules/User/Remove/UserRemove';
+import RiskIndex from '@modules/Risk/RiskIndex';
+import RiskDetails from '@modules/Risk/Details/RiskDetails';
+import RiskAddOrUpdate from '@modules/Risk/AddOrUpdate/RiskAddOrUpdate';
+import RiskRemove from '@modules/Risk/Remove/RiskRemove';
 
 function App() {
   return (

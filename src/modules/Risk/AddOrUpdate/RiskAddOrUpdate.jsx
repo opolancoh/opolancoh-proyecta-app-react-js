@@ -1,11 +1,11 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import EntityAddOrUpdate from '../../../components/contoso-university/entity/AddOrUpdate/EntityAddOrUpdate';
-import { add, update, getById } from '../../../services/riskService';
-import { getAll as getAllCategories } from '../../../services/riskCategoryService';
-import { getAll as getAllOwners } from '../../../services/riskOwnerService';
-import { getAll as getAllTreatments } from '../../../services/riskTreatmentService';
-import MinimalActionToast from '../../../components/contoso-university/MinimalActionToast';
+import EntityAddOrUpdate from '@components/contoso-university/entity/AddOrUpdate/EntityAddOrUpdate';
+import { add, update, getById } from '@services/riskService';
+import { getAll as getAllCategories } from '@services/riskCategoryService';
+import { getAll as getAllOwners } from '@services/riskOwnerService';
+import { getAll as getAllTreatments } from '@services/riskTreatmentService';
+import MinimalActionToast from '@components/contoso-university/MinimalActionToast';
 import { entityPath } from '../RiskIndex';
 import Form from './RiskAddOrUpdateForm';
 import formValidator from './riskAddOrUpdateFormValidator';

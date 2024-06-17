@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types'; 
 import Loading from '../../Loading';
 
 function EntityAddOrUpdate({ entityName, entityPath, isEditMode, isLoading, submitHandler, children }) {
@@ -28,5 +29,12 @@ function EntityAddOrUpdate({ entityName, entityPath, isEditMode, isLoading, subm
     </>
   );
 }
+
+EntityAddOrUpdate.propTypes = {
+  entityName: PropTypes.string.isRequired,
+  entityPath: PropTypes.string.isRequired,
+  isEditMode: PropTypes.bool.isRequired,
+  submitHandler: PropTypes.func.isRequired,
+};
 
 export default EntityAddOrUpdate;

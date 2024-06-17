@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import { dateToLocaleString } from '../../../../helpers/date-helper';
+import PropTypes from 'prop-types'; 
+import { dateToLocaleString } from '@helpers/date-helper';
 import Loading from '../../Loading';
 
-const EntityRemove = ({ entityName, entityPath, getById, remove, fields }) => {
+const EntityRemove = ({ subtitle, entityPath, infoFields = [], getByIdService, removeService }) => {
   const { entityId } = useParams();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
@@ -11,18 +12,18 @@ const EntityRemove = ({ entityName, entityPath, getById, remove, fields }) => {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await getById(entityId);
+      const response = await getByIdService(entityId);
 
       setData(response.data);
       setIsLoading(false);
     }
 
     fetchData();
-  }, [entityId, getById]);
+  }, [entityId, getByIdService]);
 
   const handleSubmit = async () => {
     // Send request
-    await remove(entityId);
+    await removeService(entityId);
 
     navigate(`/${entityPath}`, {
       state: {
@@ -39,7 +40,7 @@ const EntityRemove = ({ entityName, entityPath, getById, remove, fields }) => {
   return (
     <>
       <h2>Eliminar</h2>
-      <h4>{entityName}</h4>
+      <h4>{subtitle}</h4>
       <h5>Está seguro de eliminar este elemento?</h5>
       <div className="d-flex gap-2 mb-3">
         <Link to={`/${entityPath}`}>Volver a la lista</Link>
@@ -47,7 +48,7 @@ const EntityRemove = ({ entityName, entityPath, getById, remove, fields }) => {
       <hr />
 
       <dl className="row">
-        {fields.map((field, index) => (
+        {infoFields.map((field, index) => (
           <React.Fragment key={index}>
             <div className="col-2">
               <dt>{field.label}:</dt>
@@ -87,6 +88,14 @@ const EntityRemove = ({ entityName, entityPath, getById, remove, fields }) => {
       </div>
     </>
   );
+};
+
+EntityRemove.propTypes = {
+  subtitle: PropTypes.string.isRequired,
+  entityPath: PropTypes.string.isRequired,
+  infoFields: PropTypes.array.isRequired,
+  getByIdService: PropTypes.func.isRequired,
+  removeIdService: PropTypes.func.isRequired,
 };
 
 export default EntityRemove;

@@ -1,9 +1,9 @@
 import { useState, useContext } from 'react';
 import { useNavigate, useSearchParams, Link } from 'react-router-dom';
-import { AuthContext } from '../../../contexts/AuthContext';
-import { login } from '../../../services/authService';
+import { AuthContext } from '@contexts/AuthContext';
+import { login } from '@services/authService';
 import formValidation from './formValidation';
-import MinimalActionToast from '../../../components/contoso-university/MinimalActionToast';
+import MinimalActionToast from '@components/contoso-university/MinimalActionToast';
 
 const Login = () => {
   const [data, setData] = useState({ username: '', password: '' });

@@ -1,6 +1,6 @@
 import React from 'react';
-import { getById } from '../../../services/userService';
-import EntityDetails from '../../../components/contoso-university/entity/Details/EntityDetails';
+import { getById } from '@services/userService';
+import EntityDetails from '@components/contoso-university/entity/Details/EntityDetails';
 
 const UserDetails = () => {
   const fields = [

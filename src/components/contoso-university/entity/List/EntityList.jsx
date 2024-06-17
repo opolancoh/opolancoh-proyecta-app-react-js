@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import TableLoading from './TableLoading';
-import TableNoData from './TableNoData';
-import TableWithData from './TableWithData';
+import PropTypes from 'prop-types';
+import TableTable from './EntityTable';
 import MinimalActionToast from '../../MinimalActionToast';
 
 export const entityPath = 'risks';
 
-function EntityList({ entityPluralName, entityPath, columns, renderRow, fetchDataFunction }) {
+function EntityList({ title, entityPath, columns = [], dataRenderRow, fetchDataFunction }) {
   const navigate = useNavigate();
   const { state: locationState } = useLocation();
   const [isLoading, setIsLoading] = useState(true);
@@ -48,23 +47,19 @@ function EntityList({ entityPluralName, entityPath, columns, renderRow, fetchDat
     setNotification(null);
   };
 
-  if (isLoading) return <TableLoading columns={columns} />;
-
-  if (data.length === 0) return <TableNoData columns={columns} />;
-
   return (
     <>
-      <h1>{entityPluralName}</h1>
+      <h1>{title}</h1>
       <p>
         <Link to={`/${entityPath}/new`}>Crear Nuevo</Link>
       </p>
 
-      <TableWithData
+      <TableTable
         entityPath={entityPath}
-        isLoading={isLoading}
         columns={columns}
-        renderRow={renderRow}
         data={data}
+        dataRenderRow={dataRenderRow}
+        isLoading={isLoading}
       />
 
       {notification && (
@@ -77,5 +72,13 @@ function EntityList({ entityPluralName, entityPath, columns, renderRow, fetchDat
     </>
   );
 }
+
+EntityList.propTypes = {
+  title: PropTypes.string.isRequired,
+  entityPath: PropTypes.string.isRequired,
+  columns: PropTypes.array.isRequired,
+  dataRenderRow: PropTypes.func.isRequired,
+  fetchDataFunction: PropTypes.func.isRequired,
+};
 
 export default EntityList;

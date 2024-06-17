@@ -1,4 +1,4 @@
-import translations from '../../../helpers/translations';
+import translations from '@helpers/translations';
 
 const t = translations.es;
 

@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../../contexts/AuthContext';
-import { logout } from '../../../services/authService';
+import { AuthContext } from '@contexts/AuthContext';
+import { logout } from '@services/authService';
 
 function Header() {
   const navigate = useNavigate();
@@ -12,12 +12,17 @@ function Header() {
     const accessToken = localStorage.getItem('access_token');
     const refreshToken = localStorage.getItem('refresh_token');
 
-    const result = await logout(accessToken, refreshToken);
-    if (!result.success) {
-      console.error(`[logoutHandler] ${result.message}`);
+    try {
+      const result = await logout(accessToken, refreshToken);
+      if (!result.success) {
+        console.error(`[logoutHandler] ${result.message}`);
+      } else {
+        logoutContext();
+        navigate('/login');
+      }
+    } catch (error) {
+      console.error(`[logoutHandler] ${error.message}`);
     }
-    logoutContext();
-    navigate('/login');
   };
 
   return (
@@ -56,15 +61,14 @@ function Header() {
                 </Link>
               </li>
               <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle text-dark"
+                <button
+                  className="nav-link dropdown-toggle text-dark btn btn-link"
                   data-bs-toggle="dropdown"
-                  href="#"
                   role="button"
                   aria-expanded="false"
                 >
                   Ayuda
-                </a>
+                </button>
                 <ul className="dropdown-menu">
                   <li>
                     <Link className="dropdown-item" to="/about">
@@ -93,30 +97,26 @@ function Header() {
               {isAuthenticated ? (
                 <>
                   <li className="nav-item">
-                    <Link className="nav-link text-dark" to="/">
+                    <span className="nav-link text-dark">
                       Bienvenido, {user.name}!
-                    </Link>
+                    </span>
                   </li>
                   <li className="nav-item">
-                    <a
-                      className="nav-link text-dark"
-                      href="#"
+                    <button
+                      className="nav-link text-dark btn btn-link"
                       onClick={logoutHandler}
                     >
                       Cerrar sesión
-                    </a>
+                    </button>
                   </li>
                 </>
               ) : (
-                <>
-                  <li className="nav-item">
-                    <Link className="nav-link text-dark" to="/login">
-                      Iniciar sesión
-                    </Link>
-                  </li>
-                </>
+                <li className="nav-item">
+                  <Link className="nav-link text-dark" to="/login">
+                    Iniciar sesión
+                  </Link>
+                </li>
               )}
-              {}
             </ul>
           </div>
         </div>

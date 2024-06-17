@@ -1,4 +1,7 @@
-function InfoPage({ title, subtitle, data }) {
+import React from 'react';
+import PropTypes from 'prop-types'; 
+
+function InfoPage({ title, subtitle, data = [] }) {
   return (
     <>
       <h1>{title}</h1>
@@ -19,5 +22,10 @@ function InfoPage({ title, subtitle, data }) {
     </>
   );
 }
+
+InfoPage.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+};
 
 export default InfoPage;

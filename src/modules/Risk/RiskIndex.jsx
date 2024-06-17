@@ -1,14 +1,14 @@
 import { useCallback, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import translations from '../../helpers/translations';
-import { getAll } from '../../services/riskService';
-import EntityList from '../../components/contoso-university/entity/List/EntityList';
+import translations from '@helpers/translations';
+import { getAll } from '@services/riskService';
+import EntityList from '@components/contoso-university/entity/List/EntityList';
 
 const t = translations.es;
 
 export const entityPath = 'risks';
 
-function RiskList() {
+function RiskIndex() {
   const columns = useMemo(
     () => [
       { label: 'Nombre' },
@@ -24,7 +24,7 @@ function RiskList() {
     []
   );
 
-  const renderRow = useCallback(
+  const dataRenderRow = useCallback(
     (item) => (
       <tr key={item.id}>
         <th scope="row">{item.name}</th>
@@ -52,13 +52,13 @@ function RiskList() {
 
   return (
     <EntityList
-      entityName="Riesgos"
+      title="Riesgos"
       entityPath={entityPath}
       fetchDataFunction={getAll}
       columns={columns}
-      renderRow={renderRow}
+      dataRenderRow={dataRenderRow}
     />
   );
 }
 
-export default RiskList;
+export default RiskIndex;

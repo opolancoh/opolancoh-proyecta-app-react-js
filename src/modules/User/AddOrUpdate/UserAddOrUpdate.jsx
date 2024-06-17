@@ -1,8 +1,8 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import EntityAddOrUpdate from '../../../components/contoso-university/entity/AddOrUpdate/EntityAddOrUpdate';
-import { add, update, getById } from '../../../services/userService';
-import MinimalActionToast from '../../../components/contoso-university/MinimalActionToast';
+import EntityAddOrUpdate from '@components/contoso-university/entity/AddOrUpdate/EntityAddOrUpdate';
+import { add, update, getById } from '@services/userService';
+import MinimalActionToast from '@components/contoso-university/MinimalActionToast';
 import { entityPath } from '../UserIndex';
 import Form from './UserAddOrUpdateForm';
 import formValidator from './userAddOrUpdateFormValidator';

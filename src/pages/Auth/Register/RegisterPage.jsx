@@ -1,9 +1,9 @@
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { register } from '../../../services/authService';
-import Loading from '../../../components/contoso-university/Loading';
+import { register } from '@services/authService';
+import Loading from '@components/contoso-university/Loading';
 import formValidation from './formValidation';
-import { AuthContext } from '../../../contexts/AuthContext';
+import { AuthContext } from '@contexts/AuthContext';
 
 function Register() {
   const [data, setData] = useState({

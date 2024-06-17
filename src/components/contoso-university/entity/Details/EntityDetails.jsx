@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { dateToLocaleString } from '../../../../helpers/date-helper';
+import PropTypes from 'prop-types'; 
+import { dateToLocaleString } from '@helpers/date-helper';
 import Loading from '../../Loading';
 
-const EntityDetails = ({ entityName, entityPath, getById, fields }) => {
+const EntityDetails = ({ subtitle, entityPath, getById, fields = [] }) => {
   const { entityId } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState({});
@@ -23,7 +24,7 @@ const EntityDetails = ({ entityName, entityPath, getById, fields }) => {
   return (
     <>
       <h2>Detalle</h2>
-      <h4>{entityName}</h4>
+      <h4>{subtitle}</h4>
       <div className="d-flex gap-2 mb-3">
         <Link to={`/${entityPath}/${entityId}/edit`}>Editar</Link> |{' '}
         <Link to={`/${entityPath}`}>Volver a la lista</Link>
@@ -63,6 +64,12 @@ const EntityDetails = ({ entityName, entityPath, getById, fields }) => {
       </dl>
     </>
   );
+};
+
+EntityDetails.propTypes = {
+  subtitle: PropTypes.string.isRequired,
+  entityPath: PropTypes.string.isRequired,
+  getById: PropTypes.func.isRequired,
 };
 
 export default EntityDetails;

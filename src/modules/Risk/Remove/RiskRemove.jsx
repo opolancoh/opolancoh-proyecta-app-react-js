@@ -1,6 +1,6 @@
 import React from 'react';
-import { getById, remove } from '../../../services/riskService';
-import EntityRemove from '../../../components/contoso-university/entity/Remove/EntityRemove';
+import { getById, remove } from '@services/riskService';
+import EntityRemove from '@components/contoso-university/entity/Remove/EntityRemove';
 
 const RiskRemove = () => {
   const fields = [

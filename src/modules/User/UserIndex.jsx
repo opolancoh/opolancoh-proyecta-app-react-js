@@ -1,8 +1,8 @@
 import { useCallback, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import translations from '../../helpers/translations';
-import { getAll } from '../../services/userService';
-import EntityList from '../../components/contoso-university/entity/List/EntityList';
+import translations from '@helpers/translations';
+import { getAll } from '@services/userService';
+import EntityList from '@components/contoso-university/entity/List/EntityList';
 
 const t = translations.es;
 
