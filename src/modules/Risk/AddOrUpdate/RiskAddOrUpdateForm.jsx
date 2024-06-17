@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const t = translations.es;
 
-function RiskAddOrUpdateForm({ data = {}, controlsData = [], errors = {}, onChangeHandler }) {
+function RiskAddOrUpdateForm({ data = {}, controlsData = {}, errors = {}, onChangeHandler }) {
   return (
     <div className="row g-3">
       <div className="col-md-6">
@@ -17,12 +17,11 @@ function RiskAddOrUpdateForm({ data = {}, controlsData = [], errors = {}, onChan
           value={data.name}
           onChange={onChangeHandler}
         />
-        {errors.name &&
-          errors.name.map((x, index) => (
-            <div className="invalid-feedback" key={index}>
-              {x}
-            </div>
-          ))}
+        {errors.name?.map((x, index) => (
+          <div className="invalid-feedback" key={`${x}-${index}`}>
+            {x}
+          </div>
+        ))}
       </div>
 
       <div className="col-md-6">
@@ -36,12 +35,11 @@ function RiskAddOrUpdateForm({ data = {}, controlsData = [], errors = {}, onChan
           value={data.code}
           onChange={onChangeHandler}
         />
-        {errors.code &&
-          errors.code.map((x, index) => (
-            <div className="invalid-feedback" key={index}>
-              {x}
-            </div>
-          ))}
+        {errors.code?.map((x, index) => (
+          <div className="invalid-feedback" key={`${x}-${index}`}>
+            {x}
+          </div>
+        ))}
       </div>
 
       <div className="col-md-4">
@@ -61,12 +59,11 @@ function RiskAddOrUpdateForm({ data = {}, controlsData = [], errors = {}, onChan
             </option>
           ))}
         </select>
-        {errors.category &&
-          errors.category.map((x, index) => (
-            <div className="invalid-feedback" key={index}>
-              {x}
-            </div>
-          ))}
+        {errors.category?.map((x, index) => (
+          <div className="invalid-feedback" key={`${x}-${index}`}>
+            {x}
+          </div>
+        ))}
       </div>
 
       <div className="col-md-4">
@@ -86,12 +83,11 @@ function RiskAddOrUpdateForm({ data = {}, controlsData = [], errors = {}, onChan
             </option>
           ))}
         </select>
-        {errors.type &&
-          errors.type.map((x, index) => (
-            <div className="invalid-feedback" key={index}>
-              {x}
-            </div>
-          ))}
+        {errors.type?.map((x, index) => (
+          <div className="invalid-feedback" key={`${x}-${index}`}>
+            {x}
+          </div>
+        ))}
       </div>
 
       <div className="col-md-4">
@@ -111,12 +107,11 @@ function RiskAddOrUpdateForm({ data = {}, controlsData = [], errors = {}, onChan
             </option>
           ))}
         </select>
-        {errors.owner &&
-          errors.owner.map((x, index) => (
-            <div className="invalid-feedback" key={index}>
-              {x}
-            </div>
-          ))}
+        {errors.owner?.map((x, index) => (
+          <div className="invalid-feedback" key={`${x}-${index}`}>
+            {x}
+          </div>
+        ))}
       </div>
 
       <div className="col-md-4">
@@ -136,12 +131,11 @@ function RiskAddOrUpdateForm({ data = {}, controlsData = [], errors = {}, onChan
             </option>
           ))}
         </select>
-        {errors.phase &&
-          errors.phase.map((x, index) => (
-            <div className="invalid-feedback" key={index}>
-              {x}
-            </div>
-          ))}
+        {errors.phase?.map((x, index) => (
+          <div className="invalid-feedback" key={`${x}-${index}`}>
+            {x}
+          </div>
+        ))}
       </div>
 
       <div className="col-md-4">
@@ -161,12 +155,11 @@ function RiskAddOrUpdateForm({ data = {}, controlsData = [], errors = {}, onChan
             </option>
           ))}
         </select>
-        {errors.manageability &&
-          errors.manageability.map((x, index) => (
-            <div className="invalid-feedback" key={index}>
-              {x}
-            </div>
-          ))}
+        {errors.manageability?.map((x, index) => (
+          <div className="invalid-feedback" key={`${x}-${index}`}>
+            {x}
+          </div>
+        ))}
       </div>
 
       <div className="col-md-4">
@@ -186,12 +179,11 @@ function RiskAddOrUpdateForm({ data = {}, controlsData = [], errors = {}, onChan
             </option>
           ))}
         </select>
-        {errors.treatment &&
-          errors.treatment.map((x, index) => (
-            <div className="invalid-feedback" key={index}>
-              {x}
-            </div>
-          ))}
+        {errors.treatment?.map((x, index) => (
+          <div className="invalid-feedback" key={`${x}-${index}`}>
+            {x}
+          </div>
+        ))}
       </div>
 
       <div className="col-md-6">
@@ -205,12 +197,11 @@ function RiskAddOrUpdateForm({ data = {}, controlsData = [], errors = {}, onChan
           value={data.dateFrom}
           onChange={onChangeHandler}
         />
-        {errors.dateFrom &&
-          errors.dateFrom.map((x, index) => (
-            <div className="invalid-feedback" key={index}>
-              {x}
-            </div>
-          ))}
+        {errors.dateFrom?.map((x, index) => (
+          <div className="invalid-feedback" key={`${x}-${index}`}>
+            {x}
+          </div>
+        ))}
       </div>
 
       <div className="col-md-6">
@@ -224,12 +215,11 @@ function RiskAddOrUpdateForm({ data = {}, controlsData = [], errors = {}, onChan
           value={data.dateTo}
           onChange={onChangeHandler}
         />
-        {errors.dateTo &&
-          errors.dateTo.map((x, index) => (
-            <div className="invalid-feedback" key={index}>
-              {x}
-            </div>
-          ))}
+        {errors.dateTo?.map((x, index) => (
+          <div className="invalid-feedback" key={`${x}-${index}`}>
+            {x}
+          </div>
+        ))}
       </div>
 
       <div className="mb-3 form-check">
@@ -250,7 +240,7 @@ function RiskAddOrUpdateForm({ data = {}, controlsData = [], errors = {}, onChan
 
 RiskAddOrUpdateForm.propTypes = {
   data: PropTypes.object.isRequired,
-  controlsData: PropTypes.array.isRequired,
+  controlsData: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
   onChangeHandler: PropTypes.func.isRequired,
 };

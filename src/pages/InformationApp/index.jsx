@@ -14,7 +14,7 @@ function AppInfo() {
       <br />
 
       <div className="row">
-        <table className="table table-striped table-hover">
+        <table className="table table-striped table-hover" role="presentation">
           <tbody>
             <tr>
               <td>VITE_VERSION:</td>
