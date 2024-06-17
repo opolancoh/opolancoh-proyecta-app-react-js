@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 function UserAddOrUpdateForm({ isEditMode, data = {}, errors = {}, onChangeHandler }) {
   return (
     <>
@@ -157,5 +159,12 @@ function UserAddOrUpdateForm({ isEditMode, data = {}, errors = {}, onChangeHandl
     </>
   );
 }
+
+UserAddOrUpdateForm.propTypes = {
+  isEditMode: PropTypes.bool.isRequired,
+  data: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
+  onChangeHandler: PropTypes.func.isRequired,
+};
 
 export default UserAddOrUpdateForm;

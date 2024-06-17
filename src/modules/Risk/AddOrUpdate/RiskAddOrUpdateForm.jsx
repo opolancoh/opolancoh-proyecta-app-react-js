@@ -1,4 +1,5 @@
 import translations from '@helpers/translations';
+import PropTypes from 'prop-types';
 
 const t = translations.es;
 
@@ -246,5 +247,12 @@ function RiskAddOrUpdateForm({ data = {}, controlsData = [], errors = {}, onChan
     </div>
   );
 }
+
+RiskAddOrUpdateForm.propTypes = {
+  data: PropTypes.object.isRequired,
+  controlsData: PropTypes.array.isRequired,
+  errors: PropTypes.object.isRequired,
+  onChangeHandler: PropTypes.func.isRequired,
+};
 
 export default RiskAddOrUpdateForm;

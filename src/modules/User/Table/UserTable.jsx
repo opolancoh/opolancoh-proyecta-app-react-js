@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types'; 
+import PropTypes from 'prop-types';
 
 function Table({ children }) {
   return (
@@ -19,15 +19,19 @@ function Table({ children }) {
   );
 }
 
+Table.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 function TableIsLoading() {
   return (
     <Table>
       <tr>
         <td colSpan="5">
           <div className="d-flex justify-content-center">
-            <div className="spinner-border" role="status">
+            <output className="spinner-border">
               <span className="visually-hidden">Loading...</span>
-            </div>
+            </output>
           </div>
         </td>
       </tr>
@@ -79,8 +83,10 @@ function UserTable({ entityPath, data = [], isLoading = true }) {
   );
 }
 
-EntityDetails.propTypes = {
+UserTable.propTypes = {
   entityPath: PropTypes.string.isRequired,
+  data: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 export default UserTable;
