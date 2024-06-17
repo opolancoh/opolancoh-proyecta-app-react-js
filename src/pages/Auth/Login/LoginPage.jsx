@@ -30,7 +30,7 @@ const Login = () => {
       if (!navigateUrl) navigateUrl = '/';
       navigate(navigateUrl);
     } catch (error) {
-      if (error.response && error.response.errors) {
+      if (error.response?.errors) {
         setErrors(error.response.errors);
       } else {
         setNotification({ action: 'error', message: error.response.message });

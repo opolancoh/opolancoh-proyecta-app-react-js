@@ -15,6 +15,12 @@ function AppInfo() {
 
       <div className="row">
         <table className="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Parámetro</th>
+              <th>Valor</th>
+            </tr>
+          </thead>
           <tbody>
             <tr>
               <td>VITE_VERSION:</td>
