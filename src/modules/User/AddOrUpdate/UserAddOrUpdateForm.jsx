@@ -15,12 +15,11 @@ function UserAddOrUpdateForm({ isEditMode, data = {}, errors = {}, onChangeHandl
             value={data.firstName}
             onChange={onChangeHandler}
           />
-          {errors.firstName &&
-            errors.firstName.map((x, index) => (
-              <div className="invalid-feedback" key={index}>
-                {x}
-              </div>
-            ))}
+          {errors.firstName?.map((x, index) => (
+            <div className="invalid-feedback" key={`${x}-${index}`}>
+              {x}
+            </div>
+          ))}
         </div>
 
         <div className="col-6">
@@ -34,12 +33,11 @@ function UserAddOrUpdateForm({ isEditMode, data = {}, errors = {}, onChangeHandl
             value={data.lastName}
             onChange={onChangeHandler}
           />
-          {errors.lastName &&
-            errors.lastName.map((x, index) => (
-              <div className="invalid-feedback" key={index}>
-                {x}
-              </div>
-            ))}
+          {errors.lastName?.map((x, index) => (
+            <div className="invalid-feedback" key={`${x}-${index}`}>
+              {x}
+            </div>
+          ))}
         </div>
 
         <div className="col-6">
@@ -53,12 +51,11 @@ function UserAddOrUpdateForm({ isEditMode, data = {}, errors = {}, onChangeHandl
             value={data.displayName}
             onChange={onChangeHandler}
           />
-          {errors.displayName &&
-            errors.displayName.map((x, index) => (
-              <div className="invalid-feedback" key={index}>
-                {x}
-              </div>
-            ))}
+          {errors.displayName?.map((x, index) => (
+            <div className="invalid-feedback" key={`${x}-${index}`}>
+              {x}
+            </div>
+          ))}
         </div>
 
         <div className="col-6">
@@ -72,12 +69,11 @@ function UserAddOrUpdateForm({ isEditMode, data = {}, errors = {}, onChangeHandl
             value={data.userName}
             onChange={onChangeHandler}
           />
-          {errors.userName &&
-            errors.userName.map((x, index) => (
-              <div className="invalid-feedback" key={index}>
-                {x}
-              </div>
-            ))}
+          {errors.userName?.map((x, index) => (
+            <div className="invalid-feedback" key={`${x}-${index}`}>
+              {x}
+            </div>
+          ))}
         </div>
 
         {!isEditMode && (
@@ -92,12 +88,11 @@ function UserAddOrUpdateForm({ isEditMode, data = {}, errors = {}, onChangeHandl
               value={data.password}
               onChange={onChangeHandler}
             />
-            {errors.password &&
-              errors.password.map((x, index) => (
-                <div className="invalid-feedback" key={index}>
-                  {x}
-                </div>
-              ))}
+            {errors.password?.map((x, index) => (
+              <div className="invalid-feedback" key={`${x}-${index}`}>
+                {x}
+              </div>
+            ))}
           </div>
         )}
 

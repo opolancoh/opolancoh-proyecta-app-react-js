@@ -82,12 +82,11 @@ function Register() {
             onChange={handleOnChange}
             value={data.firstName}
           />
-          {errors.firstName &&
-            errors.firstName.map((x, index) => (
-              <div className="invalid-feedback" key={index}>
-                {x}
-              </div>
-            ))}
+          {errors.firstName?.map((x, index) => (
+            <div className="invalid-feedback" key={`${x}-${index}`}>
+              {x}
+            </div>
+          ))}
         </div>
 
         <div className="col-md-4">
@@ -101,12 +100,11 @@ function Register() {
             onChange={handleOnChange}
             value={data.lastName}
           />
-          {errors.lastName &&
-            errors.lastName.map((x, index) => (
-              <div className="invalid-feedback" key={index}>
-                {x}
-              </div>
-            ))}
+          {errors.lastName?.map((x, index) => (
+            <div className="invalid-feedback" key={`${x}-${index}`}>
+              {x}
+            </div>
+          ))}
         </div>
 
         <div className="col-md-4">
@@ -120,12 +118,11 @@ function Register() {
             onChange={handleOnChange}
             value={data.displayName}
           />
-          {errors.displayName &&
-            errors.displayName.map((x, index) => (
-              <div className="invalid-feedback" key={index}>
-                {x}
-              </div>
-            ))}
+          {errors.displayName?.map((x, index) => (
+            <div className="invalid-feedback" key={`${x}-${index}`}>
+              {x}
+            </div>
+          ))}
         </div>
 
         <div className="col-12">
@@ -139,12 +136,11 @@ function Register() {
             onChange={handleOnChange}
             value={data.userName}
           />
-          {errors.username &&
-            errors.username.map((x, index) => (
-              <div className="invalid-feedback" key={index}>
-                {x}
-              </div>
-            ))}
+          {errors.username?.map((x, index) => (
+            <div className="invalid-feedback" key={`${x}-${index}`}>
+              {x}
+            </div>
+          ))}
         </div>
 
         <div className="col-12">
@@ -158,20 +154,15 @@ function Register() {
             onChange={handleOnChange}
             value={data.password}
           />
-          {errors.password &&
-            errors.password.map((x, index) => (
-              <div className="invalid-feedback" key={index}>
-                {x}
-              </div>
-            ))}
+          {errors.password?.map((x, index) => (
+            <div className="invalid-feedback" key={`${x}-${index}`}>
+              {x}
+            </div>
+          ))}
         </div>
 
         <div className="col-12">
-          <button
-            type="button"
-            onClick={handleSubmit}
-            className="btn btn-primary"
-          >
+          <button type="button" onClick={handleSubmit} className="btn btn-primary">
             Crear
           </button>
         </div>

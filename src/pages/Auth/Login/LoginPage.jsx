@@ -71,9 +71,8 @@ const Login = () => {
             onChange={handleOnChange}
             value={data.username}
           />
-          {errors.username &&
-            errors.username.map((x, index) => (
-              <div className="invalid-feedback" key={index}>
+          {errors.username?.map((x, index) => (
+              <div className="invalid-feedback" key={`${x}-${index}`}>
                 {x}
               </div>
             ))}
@@ -90,9 +89,8 @@ const Login = () => {
             onChange={handleOnChange}
             value={data.password}
           />
-          {errors.password &&
-            errors.password.map((x, index) => (
-              <div className="invalid-feedback" key={index}>
+          {errors.password?.map((x, index) => (
+              <div className="invalid-feedback" key={`${x}-${index}`}>
                 {x}
               </div>
             ))}
